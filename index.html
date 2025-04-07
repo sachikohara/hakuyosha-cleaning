@@ -135,14 +135,11 @@
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     const carousel = document.querySelector('.carousel');
-    const carouselInstance = new bootstrap.Carousel(carousel, {
+    new bootstrap.Carousel(carousel, {
       interval: 3000,
-      ride: 'carousel'
+      ride: 'carousel',
+      pause: false
     });
-
-    setTimeout(() => {
-      carouselInstance.next();
-    }, 500);
 
     const faders = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver((entries) => {
