@@ -140,14 +140,33 @@
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     const carousel = document.querySelector('.carousel');
-    const carouselInstance = new bootstrap.Carousel(carousel, {
-      interval: 3000,
-      ride: 'carousel'
+    const images = carousel.querySelectorAll('img');
+    let loadedCount = 0;
+
+    images.forEach(img => {
+      if (img.complete) {
+        loadedCount++;
+      } else {
+        img.addEventListener('load', () => {
+          loadedCount++;
+          if (loadedCount === images.length) startCarousel();
+        });
+      }
     });
 
-    setTimeout(() => {
-      carouselInstance.next();
-    }, 5000);
+    if (loadedCount === images.length) {
+      startCarousel();
+    }
+
+    function startCarousel() {
+      const carouselInstance = new bootstrap.Carousel(carousel, {
+        interval: 3000,
+        ride: 'carousel'
+      });
+      setTimeout(() => {
+        carouselInstance.next();
+      }, 5000);
+    }
 
     const faders = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver((entries) => {
@@ -177,6 +196,5 @@
     });
   });
 </script>
-
 </body>
 </html>
