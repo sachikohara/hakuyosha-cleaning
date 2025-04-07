@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-
   <header class="bg-white shadow-sm sticky-top">
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="container py-2">
@@ -57,10 +56,16 @@
     <section id="about" class="section bg-light">
       <div class="container fade-in">
         <h2 class="section-title">ごあいさつ</h2>
-        <p class="text-center fs-5">
-          昭和10年創業。三代にわたり地域に根ざし、<br>
-          一品一品、心を込めて丁寧に仕上げてまいりました。
-        </p>
+        <p class="fs-5 greeting-text">
+          白陽舎クリーニングは、昭和10年の創業以来、<br>
+          大川の皆さまに支えられながら、３代にわたって歩んできました。<br>
+          一人ひとりのお客様との信頼関係を大切に、<br>
+          衣類や寝具をただ洗うだけでなく、「預けてよかった」と思っていただけるような<br>
+          仕上がりと対応を心がけています。<br>
+          小さなお店だからこそできる、目が行き届く丁寧な仕事。<br>
+          これからもこの町で、変わらぬ真心をもって皆さまの暮らしに寄り添い、<br>
+          安心してお任せいただけるお店であり続けたいと思っております。
+        </p>        
         <div class="about-img-wrapper">
           <img src="images/store.jpg" alt="店舗外観" class="section-image rounded slide-img about-image" />
         </div>
@@ -87,8 +92,7 @@
       <div class="container fade-in">
         <h2 class="section-title">配達サービス</h2>
         <p class="text-center fs-5 delivery-text">
-          お仕事でお忙しい方、ご高齢で店舗まで運ぶのが難しい方には、<br>
-          ご自宅まで無料で伺います。<br>
+          お仕事でお忙しい方、ご高齢で店舗まで運ぶのが難しい方にはご自宅まで無料で伺います。<br>
           大きな荷物でも手間ゼロでお任せください。<br>
           大川市内・近郊エリア対応。
         </p>
@@ -115,10 +119,11 @@
     <section id="access" class="section bg-light">
       <div class="container fade-in">
         <h2 class="section-title">アクセス</h2>
-        <p class="text-center fs-5">福岡県大川市向島2549-8</p>
         <p class="text-center fs-5">営業時間：8:00〜18:00（定休日：日曜・祝日）</p>
+        <p class="text-center fs-5">住所：福岡県大川市向島2549-8</p>
         <p class="text-center fs-5">駐車場：店舗横に1台分あり</p>
-        <p class="text-center fs-5">電話：<a href="tel:0944862289">0944-86-2289</a>／メール：<a href="mailto:okawa.drycleaning@gmail.com">okawa.drycleaning@gmail.com</a></p>
+        <p class="text-center fs-5">電話：<a href="tel:0944862289">0944-86-2289</a></p>
+        <p class="text-center fs-5">メール：<a href="mailto:okawa.drycleaning@gmail.com">okawa.drycleaning@gmail.com</a></p>
         <div class="map-container">
           <iframe src="https://www.google.com/maps?q=福岡県大川市向島2549-8&output=embed" allowfullscreen></iframe>
         </div>
@@ -133,41 +138,44 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const carousel = document.querySelector('.carousel');
-    new bootstrap.Carousel(carousel, {
-      interval: 3000,
-      ride: 'carousel',
-      pause: false
-    });
-
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('appear');
-        }
+    document.addEventListener('DOMContentLoaded', () => {
+      const carousel = document.querySelector('.carousel');
+      const carouselInstance = new bootstrap.Carousel(carousel, {
+        interval: 3000,
+        ride: 'carousel'
       });
-    }, { threshold: 0.2 });
-    faders.forEach(el => observer.observe(el));
 
-    const navCollapse = document.getElementById('navbarNav');
-    navCollapse.addEventListener('show.bs.collapse', () => {
-      document.body.classList.add('offcanvas-open');
-    });
-    navCollapse.addEventListener('hide.bs.collapse', () => {
-      document.body.classList.remove('offcanvas-open');
-    });
-
-    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        const collapseEl = bootstrap.Collapse.getInstance(navCollapse);
-        if (collapseEl) {
-          collapseEl.hide();
-        }
+      setTimeout(() => {
+        carouselInstance.next();
+      }, 500);
+  
+      const faders = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('appear');
+          }
+        });
+      }, { threshold: 0.2 });
+      faders.forEach(el => observer.observe(el));
+  
+      const navCollapse = document.getElementById('navbarNav');
+      navCollapse.addEventListener('show.bs.collapse', () => {
+        document.body.classList.add('offcanvas-open');
+      });
+      navCollapse.addEventListener('hide.bs.collapse', () => {
+        document.body.classList.remove('offcanvas-open');
+      });
+  
+      document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          const collapseEl = bootstrap.Collapse.getInstance(navCollapse);
+          if (collapseEl) {
+            collapseEl.hide();
+          }
+        });
       });
     });
-  });
-</script>
+  </script>  
 </body>
 </html>
