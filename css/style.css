@@ -200,3 +200,9 @@ body {
     padding-right: 1rem;
   }
 }
+
+#news ul {
+  text-align: center;
+  list-style-position: inside;
+  padding-left: 0;
+}
